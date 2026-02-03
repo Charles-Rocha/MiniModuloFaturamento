@@ -1,5 +1,5 @@
 <h1 align="center">    
-    <p>Projeto Posto ABC</p>
+    <p>Projeto Mini Módulo Faturamento</p>
     <img src="./Imagens/tela_01.png"/>    
 	</br></br>    
     <img src="./Imagens/tela_02.png"/>		
