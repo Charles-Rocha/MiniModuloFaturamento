@@ -6,7 +6,7 @@
 
 - **Criação do campo VL_TOTAL da tabela PEDIDO_ITEM**: Necessário para pode armazenar o cálculo dos campos **QUANTIDADE** x **VL_UNITARIO**, dispensando a necessidade de criar campo calculado. Servindo também para checagem do campo **TOTAL** da tabela **PEDIDO**.
 
-- **Criação do campo CORRIGIR da tabela NFE**: Tomada a decisão de criar um campo a mais na tabela NFE para sinalizar com **S** caso o status de retorno da classe **Sefaz** seja **REJEITADA**. Essa flag ajuda a identificar um pedido que esteja com **Pendência de Correção** e ao realizar as devidas correções no que tange a cadastro de clientes e produtos, o documento XML da NFe é gerado novamente, antes de ser enviado novamente para a classe **Sefaz**.
+- **Criação do campo CORRIGIR da tabela NFE**: Tomada a decisão de criar um campo a mais na tabela NFE para sinalizar com **S** caso o status de retorno da classe **Sefaz** seja **REJEITADA**. Essa flag ajuda a identificar um pedido que esteja com **Pendência de Correção** e ao realizar as devidas correções no que tange a cadastro de clientes e produtos, o documento XML da NFe é gerado novamente, antes de ser enviado para a classe **Sefaz**.
 
 - **Menu Sefaz**: Opção de menu criada para conter dois itens: **Receber NFe** e **Contingência**. 
   - **Receber NFe**: Uma rápida opção para simular o retorno do SEFAZ de uma NFe específica. 
