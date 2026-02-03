@@ -1,0 +1,36 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{26A38EC1-68D5-4C51-9E46-75BC1F94CDD7}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Src\View\MiniModuloFaturamento.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="MiniModuloFaturamento">
+        <MSBuild Projects="Src\View\MiniModuloFaturamento.dproj"/>
+    </Target>
+    <Target Name="MiniModuloFaturamento:Clean">
+        <MSBuild Projects="Src\View\MiniModuloFaturamento.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MiniModuloFaturamento:Make">
+        <MSBuild Projects="Src\View\MiniModuloFaturamento.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="MiniModuloFaturamento"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="MiniModuloFaturamento:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="MiniModuloFaturamento:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
