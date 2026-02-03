@@ -22,7 +22,7 @@
 
 ## 📘 Sobre
 
-**Teste prático para Analista Desenvolvedor Delphi**, sistema para Simulação de Processo de Faturamento em ERP.
+**Teste técnico para Analista Desenvolvedor Delphi**, sistema para Simulação de Processo de Faturamento em ERP.
 
 **Tempo total de desenvolvimento do projeto:** 40 horas.
 
@@ -41,11 +41,11 @@
   - **OBS.:** Antes de realizar qualquer ação no programa, certifique-se de que o campo **Base de Dados** esteja apontando para o seu arquivo de banco de dados.
 
 - **Cadastro**: Tela para cadastro de **Clientes**, **Produtos** e **Pedidos**.
-  - **Cadastro de clientes**: Tela para cadastro dos **clientes** que será necessário para realizar um **pedido**.
-  - **Cadastro de produtos**: Tela para cadastro dos **produtos** que será necessário para realizar um **pedido**.
-  - **Cadastro de pedidos**: Tela para cadastro dos **pedidos** onde é possível selecionar os **clientes** e **produtos** para a realização de um **pedido**.
+  - **Cadastro de Clientes**: Tela para cadastro dos **clientes** que será necessário para realizar um **pedido**.
+  - **Cadastro de Produtos**: Tela para cadastro dos **produtos** que será necessário para realizar um **pedido**.
+  - **Cadastro de Pedidos**: Tela para cadastro dos **pedidos** onde é possível selecionar os **clientes** e **produtos** para a realização de um **pedido**.
     - **Gerar NFe**: Botão para geração da NFe, que fica disponível assim que o pedido é salvo no banco de dados.
-    - **Enviar NFe**: Botão para envio da NFe para o SEFAZ, que fica disponível assim que a geração da NFe é realizado.
+    - **Enviar NFe**: Botão para envio da NFe para simulação do SEFAZ, que fica disponível assim que a geração da NFe é realizada.
 	- **Log NFe**: Botão para visualização do log da NFe, onde é possível ver o ciclo de vida de uma NFe acontecendo.
 	- **Cancelar Pedido**: Botão para cancelamento do pedido, que fica disponível somente quando o status da NFe passa para **AUTORIZADA**.
 	- **Rótulo Pendente de Correção**: Rótulo de alerta para informar que o pedido tem correções a serem feitas em cadastro de clientes ou produtos. Para mais detalhes, clicar em **Visualizar Log**.
