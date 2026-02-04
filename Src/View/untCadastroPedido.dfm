@@ -782,7 +782,6 @@ inherited frmCadastroPedido: TfrmCadastroPedido
           Text = 'Total de registros:'
           Width = 50
         end>
-      ExplicitTop = 190
     end
     object pnlPedidosTitulo: TPanel
       Left = 2
@@ -915,7 +914,7 @@ inherited frmCadastroPedido: TfrmCadastroPedido
         Width = 50
       end>
     Visible = False
-    ExplicitTop = 586
+    ExplicitTop = 596
     ExplicitWidth = 818
   end
   object pnlCampos: TPanel [4]
@@ -1107,8 +1106,6 @@ inherited frmCadastroPedido: TfrmCadastroPedido
     Align = alClient
     BevelInner = bvLowered
     TabOrder = 4
-    ExplicitTop = 375
-    ExplicitHeight = 211
     object dbgPedidoItem: TDBGrid
       Left = 2
       Top = 32
@@ -1204,7 +1201,6 @@ inherited frmCadastroPedido: TfrmCadastroPedido
           Text = 'Total de registros:'
           Width = 50
         end>
-      ExplicitTop = 190
     end
     object pnlItensPedidoTitulo: TPanel
       Left = 2

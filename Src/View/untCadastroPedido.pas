@@ -202,7 +202,6 @@ begin
         begin
           lblPendenteCorrecao.Visible := true;
           btnVisualizarLog.Visible := true;
-          CarregarLogEvento;
         end
       else
         begin
@@ -599,6 +598,7 @@ end;
 
 procedure TfrmCadastroPedido.btnVisualizarLogClick(Sender: TObject);
 begin
+  CarregarLogEvento;
   frmLogEvento.ShowModal;
 end;
 
