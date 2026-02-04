@@ -199,8 +199,8 @@ begin
       begin
         Active := false;
         SQL.Clear;
-        SQL.Add('INSERT INTO NFE (ID_NFE, ID_PEDIDO, SERIE, NUMERO, STATUS_ATUAL, CHAVE_ACESSO, DT_EMISSAO) ');
-        SQL.Add('VALUES(:IdNFe, :IdPedido, :Serie, :Numero, :StatusAtual, :ChaveAcesso, CURRENT_TIMESTAMP) ');
+        SQL.Add('INSERT INTO NFE (ID_NFE, ID_PEDIDO, SERIE, NUMERO, STATUS_ATUAL, CHAVE_ACESSO, DT_EMISSAO, CORRIGIR) ');
+        SQL.Add('VALUES(:IdNFe, :IdPedido, :Serie, :Numero, :StatusAtual, :ChaveAcesso, CURRENT_TIMESTAMP, :Corrigir) ');
 
         ParamByName('IdNFe').Value := FIdNFe;
         ParamByName('IdPedido').Value := FIdPedido;
@@ -208,6 +208,7 @@ begin
         ParamByName('Numero').Value := FNumero;
         ParamByName('StatusAtual').Value := FStatusAtual;
         ParamByName('ChaveAcesso').Value := FChaveAcesso;
+        ParamByName('Corrigir').Value := FCorrigir;
         ExecSQL;
         //Active := true;
       end;

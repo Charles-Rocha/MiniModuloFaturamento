@@ -9,7 +9,7 @@ procedure ListarNFes(mtNFe: TFDMemTable; out erro: string);
 procedure ListarNFePorIdPedido(mtNFe: TFDMemTable; pIdPedido: integer; out erro: string);
 function ListarIdNFePorIdPedido(pIdPedido: integer; out erro: string): Integer;
 function InserirNFe(pIdNFe, pIdPedido, pSerie, pNumero: integer;
-  pStatusAtual, pChaveAcesso: string; out erro: string): boolean;
+  pStatusAtual, pChaveAcesso, pCorrigir: string; out erro: string): boolean;
 function EditarNFe(pIdNFe, pIdPedido, pSerie, pNumero: integer;
   pStatusAtual, pChaveAcesso, pCorrigir: string; out erro: string): boolean;
 function DeletarNFe(pIdNFe: integer; out erro: string): boolean;
@@ -111,7 +111,7 @@ begin
 end;
 
 function InserirNFe(pIdNFe, pIdPedido, pSerie, pNumero: integer;
-  pStatusAtual, pChaveAcesso: string; out erro: string): boolean;
+  pStatusAtual, pChaveAcesso, pCorrigir: string; out erro: string): boolean;
 var
   nfe: TNfe;
 begin
@@ -126,6 +126,7 @@ begin
       nfe.Numero := pNumero;
       nfe.StatusAtual := pStatusAtual;
       nfe.ChaveAcesso := pChaveAcesso;
+      nfe.Corrigir := pCorrigir;
       nfe.InserirNFe(erro);
 
       if erro <> EmptyStr then

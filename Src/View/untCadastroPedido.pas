@@ -234,6 +234,8 @@ begin
   if FTipoCadastro = eInserir then
     begin
       btnAdicionarProdutos.Caption := 'Adicionar produtos';
+      lblPendenteCorrecao.Visible := false;
+      btnVisualizarLog.Visible := false;
     end;
 
   if FTipoCadastro = eEditar then
@@ -281,10 +283,7 @@ begin
   LimparControles;
   PreencherCamposPedido;
   FCancelar := false;
-  if dbgBaseCadastro.DataSource.DataSet.RecordCount > 0 then
-    begin
-      DM.mtPedido.Last;
-    end;
+  ConfigurarBotoes;
 end;
 
 procedure TfrmCadastroPedido.btnCancelarPedidoClick(Sender: TObject);
@@ -432,7 +431,7 @@ begin
         with frmProdutos do
           begin
             dValorTotalPedido := 0;
-            dbgPedidoItem.DataSource.DataSet.DisableControls;
+            dbgProdutosAdicionados.DataSource.DataSet.DisableControls;
             cdsProdutosAdicionados.First;
             while not cdsProdutosAdicionados.Eof do
               begin
@@ -475,7 +474,9 @@ begin
       else
         begin
           CarregarPedidos;
+          DM.mtPedido.Locate('ID_PEDIDO', iIdPedido, []);
           CarregarPedidoItens;
+          DM.mtPedidoItem.Locate('ID_PEDIDO', iIdPedido, []);
 
           if DM.mtPedido.IsEmpty then
             LimparControles
@@ -492,8 +493,6 @@ begin
       if bResultado then
         begin
           DesabilitarControles;
-          DM.mtPedido.Locate('ID_PEDIDO', iIdPedido, []);
-          DM.mtPedidoItem.Locate('ID_PEDIDO', iIdPedido, []);
 
           if FTipoCadastro = eEditar then
             begin
@@ -501,7 +500,7 @@ begin
                 GerarXML;
             end;
           FTipoCadastro := eNenhum;
-          dbgPedidoItem.DataSource.DataSet.EnableControls;
+          frmProdutos.dbgProdutosAdicionados.DataSource.DataSet.EnableControls;
         end;
       lstNFe.Free;
       StatusBar1.Panels[0].Text := 'Total de registros: ' + IntToStr(DM.mtPedido.RecordCount);
@@ -799,7 +798,7 @@ var
 begin
   iIdPedido := StrToInt(edtNumeroPedido.Text);
   iIdNFe := ListarCodigoUltimaNFe(sErro) + 1;
-  InserirNFe(iIdNFe, iIdPedido, 0, 0, 'RASCUNHO', EmptyStr, sErro);
+  InserirNFe(iIdNFe, iIdPedido, 0, 0, 'RASCUNHO', EmptyStr, 'N', sErro);
 end;
 
 procedure TfrmCadastroPedido.CriarEventoNfe(pStatusAntes, pStatusDepois, pMotivo: string);
