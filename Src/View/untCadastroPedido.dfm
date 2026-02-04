@@ -40,6 +40,7 @@ inherited frmCadastroPedido: TfrmCadastroPedido
       ParentShowHint = False
       ShowHint = True
       TabOrder = 3
+      Visible = False
       ExplicitLeft = 552
     end
     inherited btnCancelar: TBitBtn
