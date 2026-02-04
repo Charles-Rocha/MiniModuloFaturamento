@@ -158,7 +158,7 @@ begin
   if cmbTipoPessoa.Text = 'Jurídica' then
     sTipoPessoa := 'J';
 
-  sCpfCnpj := edtCpfCnpj.Text;
+  sCpfCnpj := Trim(edtCpfCnpj.Text);
   sUF := cmbUF.Text;
   sDataCadastro := DateToStr(cdpDataCadastro.Date);
   sDataCadastro := copy(sDataCadastro, 7, 4) + '-' +
@@ -319,6 +319,7 @@ procedure TfrmCadastroClientes.HabilitarControles;
 begin
   edtNome.Enabled := true;
   cmbTipoPessoa.Enabled := true;
+  edtCpfCnpj.Enabled := true;
   cmbUF.Enabled := true;
   cdpDataCadastro.Enabled := true;
   edtNome.SetFocus;

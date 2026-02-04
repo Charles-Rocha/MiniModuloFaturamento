@@ -127,6 +127,7 @@ var
   sErro: string;
   iIdNFe: integer;
 begin
+  CarregarNFe;
   iIdNFe := DM.mtNFe.FieldByName('ID_NFE').AsInteger;
 
   if DM.mtEventoNFe.Active then
@@ -198,7 +199,8 @@ begin
       else
         btnCancelarPedido.Enabled := false;
 
-      if DM.mtNFe.FieldByName('CORRIGIR').AsString = 'S' then
+      if (edtStatus.Text = 'Confirmado') and
+         (DM.mtNFe.FieldByName('CORRIGIR').AsString = 'S') then
         begin
           lblPendenteCorrecao.Visible := true;
           btnVisualizarLog.Visible := true;
@@ -499,6 +501,7 @@ begin
                 GerarXML;
             end;
           FTipoCadastro := eNenhum;
+          ConfigurarBotoes;
           frmProdutos.dbgProdutosAdicionados.DataSource.DataSet.EnableControls;
         end;
       lstNFe.Free;
