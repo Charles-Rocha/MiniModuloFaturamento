@@ -1,14 +1,14 @@
 inherited frmCadastroPedido: TfrmCadastroPedido
   Caption = 'Cadastro de Pedidos'
-  ClientHeight = 605
+  ClientHeight = 615
   ClientWidth = 818
   StyleElements = [seFont, seClient, seBorder]
   ExplicitWidth = 834
-  ExplicitHeight = 644
+  ExplicitHeight = 654
   TextHeight = 13
   object Splitter1: TSplitter [0]
     Left = 0
-    Top = 373
+    Top = 378
     Width = 818
     Height = 2
     Cursor = crVSplit
@@ -690,16 +690,16 @@ inherited frmCadastroPedido: TfrmCadastroPedido
   inherited pnlDBGrid: TPanel
     Top = 162
     Width = 818
-    Height = 211
+    Height = 216
     Align = alTop
     StyleElements = [seFont, seClient, seBorder]
     ExplicitTop = 162
     ExplicitWidth = 818
-    ExplicitHeight = 211
+    ExplicitHeight = 216
     inherited dbgBaseCadastro: TDBGrid
       Top = 32
       Width = 814
-      Height = 158
+      Height = 163
       DataSource = dtsDBGrid
       Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
       Columns = <
@@ -774,7 +774,7 @@ inherited frmCadastroPedido: TfrmCadastroPedido
     end
     object stbPedidos: TStatusBar
       Left = 2
-      Top = 190
+      Top = 195
       Width = 814
       Height = 19
       Panels = <
@@ -782,6 +782,7 @@ inherited frmCadastroPedido: TfrmCadastroPedido
           Text = 'Total de registros:'
           Width = 50
         end>
+      ExplicitTop = 190
     end
     object pnlPedidosTitulo: TPanel
       Left = 2
@@ -907,7 +908,7 @@ inherited frmCadastroPedido: TfrmCadastroPedido
     end
   end
   inherited StatusBar1: TStatusBar
-    Top = 586
+    Top = 596
     Width = 818
     Panels = <
       item
@@ -1100,17 +1101,19 @@ inherited frmCadastroPedido: TfrmCadastroPedido
   end
   object pnlItensPedido: TPanel [5]
     Left = 0
-    Top = 375
+    Top = 380
     Width = 818
-    Height = 211
+    Height = 216
     Align = alClient
     BevelInner = bvLowered
     TabOrder = 4
+    ExplicitTop = 375
+    ExplicitHeight = 211
     object dbgPedidoItem: TDBGrid
       Left = 2
       Top = 32
       Width = 814
-      Height = 158
+      Height = 163
       Align = alClient
       BorderStyle = bsNone
       DataSource = dtsPedidoItem
@@ -1193,7 +1196,7 @@ inherited frmCadastroPedido: TfrmCadastroPedido
     end
     object stbItensPedido: TStatusBar
       Left = 2
-      Top = 190
+      Top = 195
       Width = 814
       Height = 19
       Panels = <
@@ -1201,6 +1204,7 @@ inherited frmCadastroPedido: TfrmCadastroPedido
           Text = 'Total de registros:'
           Width = 50
         end>
+      ExplicitTop = 190
     end
     object pnlItensPedidoTitulo: TPanel
       Left = 2
