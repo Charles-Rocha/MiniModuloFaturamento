@@ -472,7 +472,7 @@ begin
           begin
             CriarEntradaNfe;
             CriarEventoNfe('INEXISTENTE', 'RASCUNHO', 'REGISTRO DE NFE');
-            btnGerarNfe.Enabled := true;
+            //btnGerarNfe.Enabled := true;
           end;
       end;
 
@@ -489,10 +489,11 @@ begin
         end
       else
         begin
+          FTipoCadastro := eNenhum;
           CarregarPedidos;
-          DM.mtPedido.Locate('ID_PEDIDO', iIdPedido, []);
+          DM.mtPedido.LocateEx('ID_PEDIDO', iIdPedido, []);
           CarregarPedidoItens;
-          DM.mtPedidoItem.Locate('ID_PEDIDO', iIdPedido, []);
+          DM.mtPedidoItem.LocateEx('ID_PEDIDO', iIdPedido, []);
 
           if DM.mtPedido.IsEmpty then
             LimparControles
@@ -500,8 +501,6 @@ begin
             PreencherCamposPedido;
 
           FProdutosAdicionados := false;
-          FTipoCadastro := eNenhum;
-          ConfigurarBotoes;
         end;
     except
       on E : Exception do
@@ -837,11 +836,14 @@ begin
   CarregarClientes;
 
   if DM.mtPedido.IsEmpty then
-    LimparControles
+    begin
+      LimparControles
+    end
   else
-    PreencherCamposPedido;
-
-  CarregarNFe;
+    begin
+      PreencherCamposPedido;
+      CarregarNFe;
+    end;
 
   DesabilitarControles;
   stbPedidos.Panels[0].Text := 'Total de registros: ' + IntToStr(DM.mtPedido.RecordCount);
