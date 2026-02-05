@@ -97,7 +97,6 @@ end;
 procedure TfrmProdutos.btnAceitarClick(Sender: TObject);
 begin
   Close;
-  frmCadastroPedido.btnGravar.Click;
 end;
 
 procedure TfrmProdutos.btnInserirClick(Sender: TObject);

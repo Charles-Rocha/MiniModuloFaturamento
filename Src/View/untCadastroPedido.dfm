@@ -40,6 +40,7 @@ inherited frmCadastroPedido: TfrmCadastroPedido
       ParentShowHint = False
       ShowHint = True
       TabOrder = 3
+      Visible = False
       ExplicitLeft = 552
     end
     inherited btnCancelar: TBitBtn
@@ -807,7 +808,7 @@ inherited frmCadastroPedido: TfrmCadastroPedido
         ParentFont = False
       end
       object lblPendenteCorrecao: TLabel
-        Left = 64
+        Left = 60
         Top = 8
         Width = 122
         Height = 13
@@ -878,7 +879,7 @@ inherited frmCadastroPedido: TfrmCadastroPedido
         OnClick = btnCancelarPedidoClick
       end
       object btnVisualizarLog: TBitBtn
-        Left = 192
+        Left = 188
         Top = 2
         Width = 100
         Height = 25

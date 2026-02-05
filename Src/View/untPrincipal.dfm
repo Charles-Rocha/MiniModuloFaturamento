@@ -806,9 +806,9 @@ object frmMiniModuloFaturamento: TfrmMiniModuloFaturamento
     end
     object Configurar2: TMenuItem
       Caption = 'Sefaz'
-      object ValorCombustveis1: TMenuItem
+      object ReceberNFe: TMenuItem
         Caption = 'Receber NFe...'
-        OnClick = ValorCombustveis1Click
+        OnClick = ReceberNFeClick
       end
       object N2: TMenuItem
         Caption = '-'

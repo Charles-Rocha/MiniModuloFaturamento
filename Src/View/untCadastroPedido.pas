@@ -167,37 +167,51 @@ end;
 
 procedure TfrmCadastroPedido.ConfigurarBotoes;
 begin
+  btnEditar.Enabled := false;
   if (FTipoCadastro = eEditar) or (FTipoCadastro = eNenhum) then
     begin
-      if edtStatus.Text = 'Pendente' then
-        btnGerarNfe.Enabled := true
+      if (edtStatus.Text = 'Pendente') and
+         (DM.mtNFe.FieldByName('STATUS_ATUAL').AsString = 'RASCUNHO') then
+        begin
+          btnEditar.Enabled := true;
+          btnGerarNfe.Enabled := true;
+        end
       else
-        btnGerarNfe.Enabled := false;
+        begin
+          btnGerarNfe.Enabled := false;
+        end;
 
       if (edtStatus.Text = 'Confirmado') and
          ((DM.mtNFe.FieldByName('STATUS_ATUAL').AsString = 'PRONTA PARA ENVIO') or
          (DM.mtNFe.FieldByName('STATUS_ATUAL').AsString = 'REJEITADA') or
          (DM.mtNFe.FieldByName('STATUS_ATUAL').AsString = 'CONTINGENCIA')) then
         begin
-          btnEnviarNFe.Enabled := true;
           btnEditar.Enabled := true;
+          btnEnviarNFe.Enabled := true;
         end
       else
         begin
           btnEnviarNFe.Enabled := false;
-          btnEditar.Enabled := false;
         end;
 
       if DM.mtPedido.IsEmpty then
-        btnLogNFe.Enabled := false
+        begin
+          btnLogNFe.Enabled := false;
+        end
       else
-        btnLogNFe.Enabled := true;
+        begin
+          btnLogNFe.Enabled := true;
+        end;
 
       if (edtStatus.Text = 'Faturado') and
          (DM.mtNFe.FieldByName('STATUS_ATUAL').AsString = 'AUTORIZADA') then
-        btnCancelarPedido.Enabled := true
+        begin
+          btnCancelarPedido.Enabled := true;
+        end
       else
-        btnCancelarPedido.Enabled := false;
+        begin
+          btnCancelarPedido.Enabled := false;
+        end;
 
       if (edtStatus.Text = 'Confirmado') and
          (DM.mtNFe.FieldByName('CORRIGIR').AsString = 'S') then
@@ -458,6 +472,7 @@ begin
           begin
             CriarEntradaNfe;
             CriarEventoNfe('INEXISTENTE', 'RASCUNHO', 'REGISTRO DE NFE');
+            btnGerarNfe.Enabled := true;
           end;
       end;
 
@@ -485,6 +500,8 @@ begin
             PreencherCamposPedido;
 
           FProdutosAdicionados := false;
+          FTipoCadastro := eNenhum;
+          ConfigurarBotoes;
         end;
     except
       on E : Exception do
@@ -500,8 +517,7 @@ begin
               if not DM.mtPedidoItem.IsEmpty then
                 GerarXML;
             end;
-          FTipoCadastro := eNenhum;
-          ConfigurarBotoes;
+
           frmProdutos.dbgProdutosAdicionados.DataSource.DataSet.EnableControls;
         end;
       lstNFe.Free;
@@ -769,7 +785,6 @@ end;
 procedure TfrmCadastroPedido.CarregarPedidos;
 var
   sErro: string;
-  CurrentRecord: TBookMark;
 begin
   if DM.mtPedido.Active then
     DM.mtPedido.EmptyDataSet;
@@ -777,8 +792,6 @@ begin
   DM.mtPedido.Close;
   ListarPedidos(DM.mtPedido, sErro);
   dtsDBGrid.DataSet := DM.mtPedido;
-
-  CurrentRecord := dbgBaseCadastro.DataSource.DataSet.GetBookmark;
 
   DM.mtPedido.AfterScroll := OnAfterScrollPedidos;
   DM.mtPedido.FieldByName('TOTAL').OnGetText := OnValorTotalPedidoGetText;
@@ -789,9 +802,6 @@ begin
       btnEnviarNFe.Enabled := false;
       btnLogNFe.Enabled := false;
     end;
-
-  dbgBaseCadastro.DataSource.DataSet.GotoBookmark(CurrentRecord);
-  dbgBaseCadastro.DataSource.DataSet.FreeBookmark(CurrentRecord);
 end;
 
 procedure TfrmCadastroPedido.CriarEntradaNfe;
@@ -830,6 +840,8 @@ begin
     LimparControles
   else
     PreencherCamposPedido;
+
+  CarregarNFe;
 
   DesabilitarControles;
   stbPedidos.Panels[0].Text := 'Total de registros: ' + IntToStr(DM.mtPedido.RecordCount);
@@ -950,6 +962,7 @@ procedure TfrmCadastroPedido.btnAdicionarProdutosClick(Sender: TObject);
 begin
   FProdutosAdicionados := true;
   frmProdutos.ShowModal;
+  frmCadastroPedido.btnGravar.Click;
 end;
 
 function TfrmCadastroPedido.ValidarCamposObrigatorios: boolean;

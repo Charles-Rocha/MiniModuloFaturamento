@@ -14,7 +14,7 @@ type
     Configurar1: TMenuItem;
     Abastecimentos1: TMenuItem;
     Configurar2: TMenuItem;
-    ValorCombustveis1: TMenuItem;
+    ReceberNFe: TMenuItem;
     Ajuda1: TMenuItem;
     Sobre1: TMenuItem;
     Clientes1: TMenuItem;
@@ -36,7 +36,7 @@ type
     procedure Contingencia1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
-    procedure ValorCombustveis1Click(Sender: TObject);
+    procedure ReceberNFeClick(Sender: TObject);
   private
     { Private declarations }
     FSefaz: TSefaz;
@@ -104,7 +104,7 @@ begin
   frmSobre.ShowModal;
 end;
 
-procedure TfrmMiniModuloFaturamento.ValorCombustveis1Click(Sender: TObject);
+procedure TfrmMiniModuloFaturamento.ReceberNFeClick(Sender: TObject);
 var
   sCpfCnpj, sResultado, sMensagemRetorno: string;
 begin
