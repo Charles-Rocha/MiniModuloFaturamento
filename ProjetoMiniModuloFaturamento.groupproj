@@ -3,7 +3,7 @@
         <ProjectGuid>{26A38EC1-68D5-4C51-9E46-75BC1F94CDD7}</ProjectGuid>
     </PropertyGroup>
     <ItemGroup>
-        <Projects Include="Src\View\MiniModuloFaturamento.dproj">
+        <Projects Include="MiniModuloFaturamento.dproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -15,13 +15,13 @@
         </BorlandProject>
     </ProjectExtensions>
     <Target Name="MiniModuloFaturamento">
-        <MSBuild Projects="Src\View\MiniModuloFaturamento.dproj"/>
+        <MSBuild Projects="MiniModuloFaturamento.dproj"/>
     </Target>
     <Target Name="MiniModuloFaturamento:Clean">
-        <MSBuild Projects="Src\View\MiniModuloFaturamento.dproj" Targets="Clean"/>
+        <MSBuild Projects="MiniModuloFaturamento.dproj" Targets="Clean"/>
     </Target>
     <Target Name="MiniModuloFaturamento:Make">
-        <MSBuild Projects="Src\View\MiniModuloFaturamento.dproj" Targets="Make"/>
+        <MSBuild Projects="MiniModuloFaturamento.dproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
         <CallTarget Targets="MiniModuloFaturamento"/>

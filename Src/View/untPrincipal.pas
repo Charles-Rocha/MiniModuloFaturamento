@@ -52,7 +52,7 @@ implementation
 
 {$R *.dfm}
 
-uses untCadastroCliente, untCadastroProduto, untPedido, untConfigurarBancoDados, untCadastroPedido, untDM,
+uses untCadastroCliente, untCadastroProduto, untConfigurarBancoDados, untCadastroPedido, untDM,
   Controller.Cliente, untSobre, pcnNFeRTXT;
 
 procedure TfrmMiniModuloFaturamento.Clientes1Click(Sender: TObject);
