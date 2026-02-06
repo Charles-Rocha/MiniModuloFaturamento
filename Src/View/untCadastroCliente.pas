@@ -187,7 +187,7 @@ begin
           else
             PreencherCamposCliente;
 
-          DM.mtCliente.Locate('ID_PRODUTO', iIdCliente, []);
+          DM.mtCliente.Locate('ID_CLIENTE', iIdCliente, []);
         end;
     except
       on E : Exception do
