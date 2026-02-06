@@ -419,6 +419,7 @@ var
   dValorTotalItem, dValorTotalPedido, dValorUnitario: double;
   iIdPedido, iIdCliente, iIdPedidoItem, iIdProduto, iQuantidade: integer;
   lstNFe: TStringList;
+  bGerarXML: boolean;
 begin
   if not ValidarCamposObrigatorios then
     exit;
@@ -430,6 +431,7 @@ begin
   sStatus := edtStatus.Text;
   lstNFe := TStringList.Create;
   bResultado := false;
+  bGerarXML := false;
 
   try
     if FTipoCadastro = eEditar then
@@ -472,7 +474,6 @@ begin
           begin
             CriarEntradaNfe;
             CriarEventoNfe('INEXISTENTE', 'RASCUNHO', 'REGISTRO DE NFE');
-            //btnGerarNfe.Enabled := true;
           end;
       end;
 
@@ -480,6 +481,8 @@ begin
       begin
         iIdPedido := StrToInt(edtNumeroPedido.Text);
         bResultado := EditarPedido(iIdPedido, iIdCliente, dValorTotalPedido, sStatus, sErro);
+        if bResultado then
+          bGerarXML := true;
       end;
 
     try
@@ -500,6 +503,12 @@ begin
           else
             PreencherCamposPedido;
 
+          if bGerarXML then
+            begin
+              if not DM.mtPedidoItem.IsEmpty then
+                GerarXML;
+            end;
+
           FProdutosAdicionados := false;
         end;
     except
@@ -510,13 +519,6 @@ begin
       if bResultado then
         begin
           DesabilitarControles;
-
-          if FTipoCadastro = eEditar then
-            begin
-              if not DM.mtPedidoItem.IsEmpty then
-                GerarXML;
-            end;
-
           frmProdutos.dbgProdutosAdicionados.DataSource.DataSet.EnableControls;
         end;
       lstNFe.Free;
