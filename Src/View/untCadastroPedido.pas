@@ -249,6 +249,8 @@ begin
   if FTipoCadastro = eInserir then
     begin
       btnAdicionarProdutos.Caption := 'Adicionar produtos';
+      btnCancelarPedido.Enabled := false;
+      btnGerarNfe.Enabled := false;
       lblPendenteCorrecao.Visible := false;
       btnVisualizarLog.Visible := false;
     end;

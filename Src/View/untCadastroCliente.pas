@@ -186,6 +186,8 @@ begin
             LimparControles
           else
             PreencherCamposCliente;
+
+          DM.mtCliente.Locate('ID_PRODUTO', iIdCliente, []);
         end;
     except
       on E : Exception do
